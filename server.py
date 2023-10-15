@@ -8,10 +8,10 @@ server_socket.listen(port)
 while True :
  client_socket,client_address = server_socket.accept()
  while True:
-  message = server_socket.recv(1024).decode('utf-8')
-  if message != "CLOSE SOCKET":
+  message = client_socket.recv(1024).decode()
+  if message == "CLOSE SOCKET":
    client_socket.close()
    break
   else :
-   message.upper()
-   client_socket.sendmessage.encode('utf-8')
+   res=message.upper()
+   client_socket.send(res.encode())
